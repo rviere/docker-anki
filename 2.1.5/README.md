@@ -1,9 +1,12 @@
 sudo docker build -t anki-2.1.5 .
 sudo apt install mplayer
-sudo docker run -ti --rm -e DISPLAY=$DISPLAY --device /dev/snd:/dev/snd -v /tmp/.X11-unix:/tmp/.X11-unix anki-2.1.5
+xhost +local:docker
+sudo docker run -tid --rm -e DISPLAY=$DISPLAY --device /dev/snd:/dev/snd -v /tmp/.X11-unix:/tmp/.X11-unix -v $HOME/docker/anki/Anki2:/Anki2 anki-2.1.5
+
 
 https://askubuntu.com/questions/175611/cannot-connect-to-x-server-when-running-app-with-sudo  // ???
 
+https://forums.docker.com/t/start-a-gui-application-as-root-in-a-ubuntu-container/17069  // xhost +local:docker
 http://fabiorehm.com/blog/2014/09/11/running-gui-apps-with-docker/  // run gui app in docker
 https://github.com/passbolt/passbolt_docker/issues/8  // /docker-entrypoint.sh\": permission denied"
 https://stackoverflow.com/questions/41083436/how-to-play-sound-in-a-docker-container // $HOME

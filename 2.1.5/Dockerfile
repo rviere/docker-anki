@@ -38,6 +38,8 @@ ENV QMLSCENE_DEVICE softwarecontext
 # Configuration for the keyboard input
 ENV QT_XKB_CONFIG_ROOT=/usr/share/X11/xkb
 
+ENV XDG_DATA_HOME=/Anki2
+
 ENV LANG en_US.UTF-8
 
 COPY entrypoint.sh /
